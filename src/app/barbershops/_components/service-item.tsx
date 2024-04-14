@@ -11,8 +11,8 @@ export function ServicesItem({ service }: ServicesItemProps) {
   console.log(service.imageUrl)
   return (
     <Card className='p-0'>
-      <CardContent className='p-4 flex'>
-        <div className='relative w-[140px] aspect-square'>
+      <CardContent className='p-4 flex gap-3'>
+        <div className='relative min-w-[90px] min-h-[90px] '>
           <Image
             src={service.imageUrl}
             alt={service.name}
@@ -24,19 +24,19 @@ export function ServicesItem({ service }: ServicesItemProps) {
         </div>
 
         <div>
-          <h4 className='text-xl font-bold'>{service.name}</h4>
-          <p className='text-sm text-muted-foreground pt-2 pb-4'>
+          <h4 className='text-base font-bold'>{service.name}</h4>
+          <p className='text-xs text-muted-foreground pt-2 pb-4'>
             {service.description}
           </p>
 
           <div className='flex items-center justify-between'>
-            <span className='text-primary font-bold'>
+            <span className='text-primary font-bold text-xs'>
               {Number(service.price).toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
               })}
             </span>
-            <Button>Reservar</Button>
+            <Button className='text-xs py-1 px-2 h-7'>Reservar</Button>
           </div>
         </div>
       </CardContent>
