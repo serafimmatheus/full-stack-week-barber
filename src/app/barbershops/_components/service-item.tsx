@@ -13,14 +13,14 @@ export function ServicesItem({ service }: ServicesItemProps) {
     <Card className='p-0'>
       <CardContent className='p-4 flex'>
         <div className='relative w-[140px] aspect-square'>
-          {/* <Image
+          <Image
             src={service.imageUrl}
             alt={service.name}
             sizes='100vw'
             fill
             style={{ objectFit: 'cover' }}
             className='rounded-lg'
-          /> */}
+          />
         </div>
 
         <div>
