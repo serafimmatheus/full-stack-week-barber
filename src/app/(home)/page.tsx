@@ -58,6 +58,30 @@ export default async function Home() {
           </CarouselContent>
         </Carousel>
       </div>
+
+      <div className='pt-6 pl-5'>
+        <h4 className='pb-3 uppercase text-sm text-muted-foreground font-bold'>
+          Populares
+        </h4>
+
+        <Carousel
+          opts={{
+            align: 'start',
+          }}
+          className='w-full max-w-sm'
+        >
+          <CarouselContent>
+            {barberShop.map((barberShop) => (
+              <CarouselItem
+                key={barberShop.id}
+                className='basis-2/3 lg:basis-1/3'
+              >
+                <BarberShopItem key={barberShop.id} barberShop={barberShop} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
     </main>
   )
 }
