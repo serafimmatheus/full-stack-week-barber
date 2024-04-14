@@ -1,13 +1,22 @@
+'use client'
+
 import Image from 'next/image'
 import { Card, CardContent } from './ui/card'
 import { Barbershop } from '@prisma/client'
 import { Button } from './ui/button'
+import { useRouter } from 'next/navigation'
 
 interface BarberShopItemProps {
   barberShop: Barbershop
 }
 
 export function BarberShopItem({ barberShop }: BarberShopItemProps) {
+  const router = useRouter()
+
+  const handleReserve = (id: string) => {
+    return router.push(`/barbershops/${id}`)
+  }
+
   return (
     <Card className='h-full'>
       <CardContent className='p-0 h-full flex flex-col'>
@@ -37,7 +46,11 @@ export function BarberShopItem({ barberShop }: BarberShopItemProps) {
             <p className='text-sm text-muted-foreground'>
               {barberShop.address}
             </p>
-            <Button variant='outline' className='mt-6'>
+            <Button
+              variant='outline'
+              className='mt-6'
+              onClick={() => handleReserve(barberShop.id)}
+            >
               Reservar
             </Button>
           </div>

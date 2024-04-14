@@ -9,79 +9,84 @@ import {
   CarouselContent,
   CarouselItem,
 } from '../_components/ui/carousel'
+import { Header } from '../_components/header'
 
 export default async function Home() {
   const barberShop = await db.barbershop.findMany()
 
   return (
-    <main className='flex min-h-screen flex-col py-8'>
-      <div className='px-5'>
-        <h2 className='text-xl font-bold'>Olá, Matheus</h2>
-        <span className='capitalize text-sm text-muted-foreground'>
-          {format(new Date(), `EEE, dd 'de' MMMM`, {
-            locale: ptBR,
-          })}
-        </span>
-      </div>
+    <>
+      <Header />
 
-      <div className='pt-6 px-5'>
-        <Search />
-      </div>
+      <main className='flex min-h-screen flex-col py-8'>
+        <div className='px-5'>
+          <h2 className='text-xl font-bold'>Olá, Matheus</h2>
+          <span className='capitalize text-sm text-muted-foreground'>
+            {format(new Date(), `EEE, dd 'de' MMMM`, {
+              locale: ptBR,
+            })}
+          </span>
+        </div>
 
-      <div className='pt-6 px-5'>
-        <h4 className='pb-3 uppercase text-sm text-muted-foreground font-bold'>
-          Agendamentos
-        </h4>
-        <BukingItem />
-      </div>
+        <div className='pt-6 px-5'>
+          <Search />
+        </div>
 
-      <div className='pt-6 pl-5'>
-        <h4 className='pb-3 uppercase text-sm text-muted-foreground font-bold'>
-          Recomendados
-        </h4>
+        <div className='pt-6 px-5'>
+          <h4 className='pb-3 uppercase text-sm text-muted-foreground font-bold'>
+            Agendamentos
+          </h4>
+          <BukingItem />
+        </div>
 
-        <Carousel
-          opts={{
-            align: 'start',
-          }}
-          className='w-full max-w-sm'
-        >
-          <CarouselContent>
-            {barberShop.map((barberShop) => (
-              <CarouselItem
-                key={barberShop.id}
-                className='basis-2/3 lg:basis-1/3'
-              >
-                <BarberShopItem key={barberShop.id} barberShop={barberShop} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
+        <div className='pt-6 pl-5'>
+          <h4 className='pb-3 uppercase text-sm text-muted-foreground font-bold'>
+            Recomendados
+          </h4>
 
-      <div className='pt-6 pl-5'>
-        <h4 className='pb-3 uppercase text-sm text-muted-foreground font-bold'>
-          Populares
-        </h4>
+          <Carousel
+            opts={{
+              align: 'start',
+            }}
+            className='w-full max-w-sm'
+          >
+            <CarouselContent>
+              {barberShop.map((barberShop) => (
+                <CarouselItem
+                  key={barberShop.id}
+                  className='basis-2/3 lg:basis-1/3'
+                >
+                  <BarberShopItem key={barberShop.id} barberShop={barberShop} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
 
-        <Carousel
-          opts={{
-            align: 'start',
-          }}
-          className='w-full max-w-sm'
-        >
-          <CarouselContent>
-            {barberShop.map((barberShop) => (
-              <CarouselItem
-                key={barberShop.id}
-                className='basis-2/3 lg:basis-1/3'
-              >
-                <BarberShopItem key={barberShop.id} barberShop={barberShop} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
-    </main>
+        <div className='pt-6 pl-5'>
+          <h4 className='pb-3 uppercase text-sm text-muted-foreground font-bold'>
+            Populares
+          </h4>
+
+          <Carousel
+            opts={{
+              align: 'start',
+            }}
+            className='w-full max-w-sm'
+          >
+            <CarouselContent>
+              {barberShop.map((barberShop) => (
+                <CarouselItem
+                  key={barberShop.id}
+                  className='basis-2/3 lg:basis-1/3'
+                >
+                  <BarberShopItem key={barberShop.id} barberShop={barberShop} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+      </main>
+    </>
   )
 }
