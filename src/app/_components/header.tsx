@@ -5,9 +5,9 @@ import { MenuIcon } from 'lucide-react'
 
 export function Header() {
   return (
-    <Card>
+    <Card className='border-b rounded-none'>
       <CardContent className='flex justify-between items-center px-5 py-8'>
-        <Image src='/FSW-BARBER.png' alt='FSW BARBER' width={122} height={22} />
+        <Image src='/Logo.png' alt='FSW BARBER' width={122} height={22} />
 
         <Button size='icon' variant='outline'>
           <MenuIcon />
