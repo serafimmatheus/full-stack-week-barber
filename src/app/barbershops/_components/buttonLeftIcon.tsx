@@ -8,7 +8,7 @@ export function ButtonLeftIcon() {
   const router = useRouter()
 
   const handleBack = () => {
-    return router.back()
+    return router.replace('/')
   }
 
   return (
