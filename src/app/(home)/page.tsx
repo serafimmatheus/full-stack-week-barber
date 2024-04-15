@@ -1,5 +1,3 @@
-import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale/pt-BR'
 import { Search } from '../_components/search'
 import { BukingItem } from '../_components/buking-item'
 import { db } from '../_lib/prisma'
@@ -10,6 +8,7 @@ import {
   CarouselItem,
 } from '../_components/ui/carousel'
 import { Header } from '../_components/header'
+import { Welcome } from './_components/welcome'
 
 export default async function Home() {
   const barberShop = await db.barbershop.findMany()
@@ -20,12 +19,7 @@ export default async function Home() {
 
       <main className='flex min-h-screen flex-col py-8'>
         <div className='px-5'>
-          <h2 className='text-xl font-bold'>Olá, Matheus</h2>
-          <span className='capitalize text-sm text-muted-foreground'>
-            {format(new Date(), `EEE, dd 'de' MMMM`, {
-              locale: ptBR,
-            })}
-          </span>
+          <Welcome />
         </div>
 
         <div className='pt-6 px-5'>
