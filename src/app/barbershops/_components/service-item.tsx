@@ -11,8 +11,8 @@ export function ServicesItem({ service }: ServicesItemProps) {
   console.log(service.imageUrl)
   return (
     <Card className='p-0'>
-      <CardContent className='p-4 flex gap-3'>
-        <div className='relative min-w-[90px] min-h-[90px] '>
+      <CardContent className='p-4 flex gap-3 items-center'>
+        <div className='relative min-w-[90px] min-h-[90px]'>
           <Image
             src={service.imageUrl}
             alt={service.name}
@@ -23,7 +23,7 @@ export function ServicesItem({ service }: ServicesItemProps) {
           />
         </div>
 
-        <div>
+        <div className='flex flex-col flex-1'>
           <h4 className='text-base font-bold'>{service.name}</h4>
           <p className='text-xs text-muted-foreground pt-2 pb-4'>
             {service.description}
