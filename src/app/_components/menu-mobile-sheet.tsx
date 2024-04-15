@@ -27,10 +27,10 @@ interface MenuMobileSheetProps {
 }
 
 export function MenuMobileSheet({ className }: MenuMobileSheetProps) {
-  const { data, status } = useSession()
+  const { data } = useSession()
 
   const handleLogin = async () => {
-    await signIn()
+    await signIn('google')
   }
 
   const handleLogout = async () => {
@@ -93,19 +93,19 @@ export function MenuMobileSheet({ className }: MenuMobileSheetProps) {
 
             <div className='pt-8'>
               <ul className='flex flex-col gap-3'>
-                <Link href='/'>
-                  <li className='border border-border p-2 rounded-lg text-foreground flex items-center gap-2'>
+                <li className='border border-border p-2 rounded-lg text-foreground hover:bg-secondary cursor-pointer'>
+                  <Link href='/' className='flex items-center gap-2'>
                     <HomeIcon size={18} />
                     Inicio
-                  </li>
-                </Link>
+                  </Link>
+                </li>
 
-                <Link href='/bukings'>
-                  <li className='border border-border p-2 rounded-lg text-foreground flex items-center gap-2'>
+                <li className='border border-border p-2 rounded-lg text-foreground hover:bg-secondary cursor-pointer'>
+                  <Link href='/bukings' className='flex items-center gap-2'>
                     <CalendarDaysIcon size={18} />
                     Agendamentos
-                  </li>
-                </Link>
+                  </Link>
+                </li>
               </ul>
             </div>
           </SheetDescription>

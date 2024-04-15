@@ -2,13 +2,14 @@ import { Button } from '@/app/_components/ui/button'
 import { Card, CardContent } from '@/app/_components/ui/card'
 import { Service } from '@prisma/client'
 import Image from 'next/image'
+import { ButtonReserved } from './buttonReserved'
 
 interface ServicesItemProps {
   service: Service
+  isAuthenticated: boolean
 }
 
-export function ServicesItem({ service }: ServicesItemProps) {
-  console.log(service.imageUrl)
+export function ServicesItem({ service, isAuthenticated }: ServicesItemProps) {
   return (
     <Card className='p-0'>
       <CardContent className='p-4 flex gap-3 items-center'>
@@ -36,7 +37,8 @@ export function ServicesItem({ service }: ServicesItemProps) {
                 currency: 'BRL',
               })}
             </span>
-            <Button className='text-xs py-1 px-2 h-7'>Reservar</Button>
+
+            <ButtonReserved isAuthenticated={isAuthenticated} />
           </div>
         </div>
       </CardContent>

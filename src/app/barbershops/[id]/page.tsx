@@ -1,17 +1,19 @@
-import { Button } from '@/app/_components/ui/button'
 import { db } from '@/app/_lib/prisma'
-import { ChevronLeftIcon, MapPinIcon, MenuIcon } from 'lucide-react'
+import { MapPinIcon } from 'lucide-react'
 import Image from 'next/image'
 import { ButtonLeftIcon } from '../_components/buttonLeftIcon'
 import { Separator } from '@/app/_components/ui/separator'
 import { ServicesItem } from '../_components/service-item'
 import { MenuMobileSheet } from '@/app/_components/menu-mobile-sheet'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { getServerSession } from 'next-auth'
 
 interface BarberShopPageProps {
   params: { id?: string }
 }
 
 export default async function BarberShopPage({ params }: BarberShopPageProps) {
+  const session = await getServerSession(authOptions)
   if (!params.id) {
     return <p>BarberShop não encontrado</p>
   }
@@ -61,7 +63,11 @@ export default async function BarberShopPage({ params }: BarberShopPageProps) {
 
       <div className='px-5 pt-8 flex flex-col gap-5 pb-12'>
         {barberShop.services.map((service) => (
-          <ServicesItem key={service.id} service={service} />
+          <ServicesItem
+            key={service.id}
+            service={service}
+            isAuthenticated={!!session?.user}
+          />
         ))}
       </div>
     </main>
