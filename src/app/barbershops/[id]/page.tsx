@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { ButtonLeftIcon } from '../_components/buttonLeftIcon'
 import { Separator } from '@/app/_components/ui/separator'
 import { ServicesItem } from '../_components/service-item'
+import { MenuMobileSheet } from '@/app/_components/menu-mobile-sheet'
 
 interface BarberShopPageProps {
   params: { id?: string }
@@ -36,13 +37,7 @@ export default async function BarberShopPage({ params }: BarberShopPageProps) {
       <div className='relative w-full h-[250px]'>
         <ButtonLeftIcon />
 
-        <Button
-          size='icon'
-          variant='outline'
-          className='absolute top-8 right-5 z-20 size-12'
-        >
-          <MenuIcon />
-        </Button>
+        <MenuMobileSheet className='absolute top-8 right-5 z-20 size-12' />
 
         <Image
           src={barberShop.imageUrl}
