@@ -67,6 +67,7 @@ export default async function BarberShopPage({ params }: BarberShopPageProps) {
             key={service.id}
             service={service}
             isAuthenticated={!!session?.user}
+            barberShop={barberShop}
           />
         ))}
       </div>
